@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <windows.h>
+
+#define PASSWORD "1234567"
+
+int verify_password (char *password)
+{
+    int authenticated;
+    char buffer[8];// add local buff
+    printf("call the strcmp()\n");
+    system("pause");
+    authenticated = strcmp(password, PASSWORD);
+    printf("call the strcpy()\n");
+    system("pause");
+    strcpy(buffer, password);//over flowed here!    
+    return authenticated;
+}
+
+int main(int argc, char **argv, char **envp)
+{
+    int valid_flag = 0;
+    char password[1024];
+    while(1)
+    {
+        printf("1.input\n");
+        system("pause");
+        printf("please input password:       ");
+        scanf("%s", password);
+        printf("call the verify_password()\n");
+        system("pause");
+        valid_flag = verify_password(password);
+        printf("if branch\n");
+        system("pause");
+        if(valid_flag)
+        {
+            printf("incorrect password!\n\n");
+        }
+        else
+        {
+            printf("Congratulation! You have passed the verification!\n");
+            break;
+        }
+    }
+    printf("game over :)\n");
+    system("pause");
+    return 0;
+}
