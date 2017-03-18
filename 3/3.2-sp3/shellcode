@@ -1,4 +1,4 @@
-//此代码主要是shellcode代码的汇编形式
+//此代码主要是shellcode代码的汇编形式，介绍了如何调出MessageboxA和ExitProcess
 #include <windows.h>
 int main()
 {   
