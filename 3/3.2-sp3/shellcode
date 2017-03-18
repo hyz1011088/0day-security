@@ -1,3 +1,4 @@
+//此代码主要是shellcode代码的汇编形式
 #include <windows.h>
 int main()
 {   
