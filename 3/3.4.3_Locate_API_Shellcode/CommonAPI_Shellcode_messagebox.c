@@ -24,7 +24,7 @@ void main()
 //每条代码注释：
 /*
 "\x90"//                        NOP
-"\xFC"
+"\xFC"                          CLD
 "\x68\x6A\x0A\x38\x1E"//        PUSH 1E380A6A
 "\x68\x63\x89\xD1\x4F"//        PUSH 4FD18963
 "\x68\x32\x74\x91\x0C"//        PUSH 0C917432
