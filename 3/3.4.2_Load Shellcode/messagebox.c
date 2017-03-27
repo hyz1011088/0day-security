@@ -14,7 +14,7 @@ void main()
  __asm
  {
    lea eax,shellcode
-   push			eax
+   push	eax
    ret             //ret指令会将push进去的shellcode在栈中的起始地址弹给EIP，让处理器调到栈区去执行shellcode
  }
 }
