@@ -1,3 +1,4 @@
+//该Shellcode能够适应各种平台弹出messagebox
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
