@@ -7,6 +7,7 @@ CONTENTS ：
 4. 用MetaSploit开发Exploit
 5. 堆溢出利用
 6. 形形色色的内存攻击技术
+7. 手机里的缓冲区溢出
 
 
 Reference:
